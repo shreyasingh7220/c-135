@@ -1,0 +1,40 @@
+<html>
+<head>
+
+	<title>AI object finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body background="data:image/jpeg;base64,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">
+<center>
+<h1 class="btn btn-info heading">AI Object Finder
+  <br>
+  <span style="color:black; font-size: 15px;">Input name which you will give should match the name present in cocossd model then only it will detect . </span>
+</h1>
+<br><br>
+<div class="form-group" style="width: 30%;">
+<label for="">Object Name : </label>
+<input type="text" class="form-control" id="object_name">
+</div>
+<button class="btn btn-success" id="start" onclick="start()">Start</button>
+<br><br>
+<h3 id="status" class="btn btn-warning"></h3>
+<br><br>
+<h3 id="object_status" class="btn btn-danger"></h3>
+</center>
+<div class="copy_right_footer">Developed By Shreya Singh</div>
+
+<script src="main.js"></script>
+
+</body>
+
+</html>
